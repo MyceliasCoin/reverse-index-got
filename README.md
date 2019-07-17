@@ -1,6 +1,6 @@
 # Game of Thrones: Reverse Indexing
 
-![Image of Cover](images/intro.jpeg)
+![Image of Cover](images/wallpaper.png)
 
 Castle Black's library is home to hundreds of thousands of rare and invaluable texts.
 
