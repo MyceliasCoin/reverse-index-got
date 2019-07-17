@@ -17,14 +17,17 @@ if __name__ == "__main__":
     Setup Spark session
     """
     # set up spark context and session
-    spark_context = SparkContext(conf=SparkConf().setAppName("Tx-Reverse-Lookup"))
-    spark = SparkSession.builder.appName("Tx-Reverse-Lookup").getOrCreate()
+    spark_context = SparkContext(conf=SparkConf().setAppName("Pi-Test"))
+    spark = SparkSession.builder.appName("Pi-Test").getOrCreate()
     spark_context = spark.sparkContext
 
+    # set number of samples
     num_samples = 1000000
 
+    # run filter function
     count = spark_context.parallelize(range(0, num_samples)).filter(inside).count()
 
+    # print out result
     print("Pi is roughly %f" % (4.0 * count / num_samples))
 
     # stop spark session
