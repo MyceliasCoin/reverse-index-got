@@ -66,14 +66,22 @@ The required algorithm involves four key steps:
 
 ## MapReduce
 
-![Image of Pipeline](images/pipelinefinal.png)
+We will use the following RDD methods to perform the above steps: `wholeTextFiles()` `flatmap()`, `map()`, `reduceByKey()`, `sortByKey()`.
 
-### Data Acquisition
+Method outputs will be described in more detail below, but feel free to refer to [documentation](https://spark.apache.org/docs/latest/rdd-programming-guide.html) for additional details.
 
-Data is acquired by running JSON-RPC calls from a full Bitcoin Core node.
+--- START ---
 
-Run `./json-rpc-pase-all-blocks.sh` in `/src/bash` directory to deserialize Bitcoin block data into JSON and write into dedicated AWS S3 bucket.
-This must be run from a full Bitcoin Core node with transaction indexing enabled (see [here](https://www.buildblockchain.tech/blog/btc-node-developers-guide) for setup instructions)
+### Data Read
+
+`wholeTextFiles()` allows us to read in a directory of files as an RDD of (filepath, content) rows.
+
+We simply point `wholeTextFiles()` to the appropriate `input` directory.
+
+### Word Processing
+
+`flatMap`
+
 
 
 ### Ingestion
@@ -97,6 +105,7 @@ Using a graph model for processing transaction data is crucial as Disjoint Set o
 
 (See Installation section below) run `tx-lookup-cluster.py` in `src/spark` directory using `spark-submit` command in PySpark to process `transactions` table in PostgreSQL and generate address clusters.
 
+--- END ---
 
 ## Installation
 
@@ -111,7 +120,7 @@ We will set up Spark on a local machine for testing purposes, but below instruct
 
 When installing only on local machine, ignore any worker-specific instructions below.
 
-We will launch four EC2 instances, each using the **Ubuntu Server 18.04 LTS (HVM), SSD Volume Type** 1 x m5.large (master), 3x m5.2xlarge (workers) image type and set root volume storage to 100 GB.
+We will launch four EC2 instances, each using the **Ubuntu Server 18.04 LTS (HVM), SSD Volume Type** 1 x m4.large (master), 3x m4.large (workers) image type and set root volume storage to 100 GB.
 Then [SSH into the instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the following commands:
 
     # run update and install java and scala
