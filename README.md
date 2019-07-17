@@ -13,7 +13,7 @@ We will be using a vector representation of book documents called reverse indexi
 1. [Motivation](README.md#Motivation)
 2. [Dataset](README.md#Dataset)
 3. [Methodology](README.md#Methodology)
-4. [MapReduce](README.md#Architecture)
+4. [MapReduce](README.md#MapReduce)
 5. [Installation](README.md#Installation)
 
 ## Motivation
