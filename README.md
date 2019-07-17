@@ -70,7 +70,6 @@ We will use the following RDD methods to perform the above steps: `wholeTextFile
 
 Method outputs will be described in more detail below, but feel free to refer to [documentation](https://spark.apache.org/docs/latest/rdd-programming-guide.html) for additional details.
 
---- START ---
 
 ### Data Read
 
@@ -81,7 +80,6 @@ We simply point `wholeTextFiles()` to the appropriate `input` directory.
 ### Word Processing
 
 `flatMap`
-
 
 
 ### Ingestion
@@ -105,7 +103,6 @@ Using a graph model for processing transaction data is crucial as Disjoint Set o
 
 (See Installation section below) run `tx-lookup-cluster.py` in `src/spark` directory using `spark-submit` command in PySpark to process `transactions` table in PostgreSQL and generate address clusters.
 
---- END ---
 
 ## Installation
 
