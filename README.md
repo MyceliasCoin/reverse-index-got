@@ -78,7 +78,7 @@ This must be run from a full Bitcoin Core node with transaction indexing enabled
 
 ### Ingestion
 
-BitWatch runs on top of a Spark cluster (one c5.large for master, three c5.2xlarge for workers) and a single PostgreSQL instance (one m4.large).
+BitWatch runs on top of a Spark cluster (one m4.large for master, three m4.large for workers) and a single PostgreSQL instance (one m4.large).
 
 Data is ingested with Spark from an S3 bucket that holds JSON files (one file for each blockchain block).
 
