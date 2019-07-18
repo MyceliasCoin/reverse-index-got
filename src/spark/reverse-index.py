@@ -18,7 +18,8 @@ def main(sc):
     long_path = "file:/home/cheon/PycharmProjects/reverse-index-got/input_test/"
 
     # replacement for insignificant characters
-    regex_tgt = "[,.?;-]"
+    # regex_tgt = "[,.?;-\'\[\]]"
+    regex_tgt = '[^a-zA-Z]+'
 
     # process data
     output = rdd.flatMap(lambda file: [(file[0].replace(long_path, ""), re.sub(regex_tgt, "", word)) for word in file[1].lower().split()]) \
@@ -27,8 +28,10 @@ def main(sc):
         .map(lambda word_files: (word_files[0], list(set(word_files[1])))) \
         .sortByKey(ascending=True)
 
-    for x in output.collect():
-        print(x)
+    output.saveAsTextFile("output.txt")
+
+    # for x in output.collect():
+    #     print(x)
 
 
 if __name__ == "__main__":
